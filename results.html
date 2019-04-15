@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#div-1i">Primera iteració</a></p>
+      <p><a href="#div-2i">Segona iteració</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+    <div class="col-sm-8 text-left">
+      <h1>RDF results</h1>
+      <p>
+        En aquesta pàgina mostram els resultats de l'execució del nostre
+        RDF en cada una de les iteracions.
+      </p>
+      <p>
+        Per cada iteració mostram els resultats númerics amb els valors del
+        F1-score, accuracy i Cohen's kappa. Així com una sèrie d'imatges per
+        ilustrar els resultats visualment.
+      </p>
+      <hr>
+    </div>
+    <div id="div-1i" class="col-sm-8 text-left">
+      <h2>Primera iteració</h2>
+      <p>
+        En aquesta primera iteració s'executa l'algorisme amb
+        el dataset proporcionat per Tomson et al.
+        (https://cims.nyu.edu/~tompson/NYU_Hand_Pose_Dataset.htm)
+      </p>
+      <h3>Mètriques</h3>
+      <p>Lorem ipsum...</p>
+      <h3>Imatges</h3>
+      <h4>Resultats genèrics</h4>
+      <p>
+        Els següents tres exemples mostren 3 casos en que l'algorisme té un funcionament correcte.
+      </p>
+      <img src="https://www.dropbox.com/s/9gbz979zeh3svzs/i1-res1.png?dl=1" alt="Smiley face" height="200" width="620">
+      <img src="https://www.dropbox.com/s/kon4gn519bk6dix/i1-res2.png?dl=1" alt="Smiley face" height="200" width="620">
+      <img src="https://www.dropbox.com/s/7ljeku81lkpedvs/i1-res3.png?dl=1" alt="Smiley face" height="200" width="620">
+
+      <h4>
+        Problematiques detectades
+      </h4>
+      <h5>On acaba la mà i comença el braç?</h5>
+      <img src="https://www.dropbox.com/s/szbbkfrvza25f88/i1-res-problem1.png?dl=1" alt="Smiley face" height="200" width="620">
+      <img src="https://www.dropbox.com/s/58z4cy49ha8clqu/i1-res-problem2.png?dl=1" alt="Smiley face" height="200" width="620">
+      <img src="https://www.dropbox.com/s/4cu7keczg9ljeuy/i1-res-problem3.png?dl=1" alt="Smiley face" height="200" width="620">
+      <img src="https://www.dropbox.com/s/eu72knntjexolcg/i1-res-problem4.png?dl=1" alt="Smiley face" height="200" width="620">
+
+      <p>Els colzes són extrems del cos, al igual que les mans</p>
+      <img src="https://www.dropbox.com/s/0rotrg9vcfzil5a/i1-res-problem5.png?dl=1" alt="Smiley face" height="200" width="620">
+      <img src="https://www.dropbox.com/s/gzqc8nwr91cu96e/i1-res-problem6.png?dl=1" alt="Smiley face" height="200" width="620">
+
+      <p>Posicions de les mans, profunditat similar a la resta del cos.</p>
+      <img src="https://www.dropbox.com/s/y0xnaqcbhq2xaaa/i1-res-problem7.png?dl=1" alt="Smiley face" height="200" width="620">
+      <img src="https://www.dropbox.com/s/f9nxiuuoq6kd2at/i1-res-problem8.png?dl=1" alt="Smiley face" height="200" width="620">
+      <img src="https://www.dropbox.com/s/59kceibaxqj46ml/i1-res-problem9.png?dl=1" alt="Smiley face" height="200" width="620">
+
+      <p>Lorem ipsum...</p>
+    </div>
+    <div id="div-2i" class="col-sm-8 text-left">
+      <h2>Segona iteració</h2>
+      <p>
+        L'objectiu d'aquesta iteració és comprovar si l'algorisme funciona correctament amb imatges agafades
+        del món real.
+      </p>
+      <p>
+        Hem adaptat l'algorisme per a processar imatges agafades directament d'una càmera TOF,
+        concretament la de la kinect 2.
+        També, hem integrat al software una implementació d'un algorisme de Background substraction
+        com el definit a https://www.sciencedirect.com/science/article/pii/S0167865516302379.
+      </p>
+      <p>
+        Hem reentrenat el RDF amb el dataset que ja havíem utilitzat a la primera iteració,
+        i l'hem validat amb les nostres imatges.
+      </p>
+      <h3>Mètriques</h3>
+      <p>
+        Les mètriques són les mateixes que en la primera iteració ja que
+        utilitzem el mateix classificador.
+      </p>
+      <h3>Imatges</h3>
+      <img src="https://www.dropbox.com/s/4blvihxyxbq2crg/i2-res1.png?dl=1" alt="Smiley face" height="620" width="620">
+      <img src="https://www.dropbox.com/s/r8pq7gngzp7y2po/i2-res2.png?dl=1" alt="Smiley face" height="620" width="620">
+
+      <h3>Conclusions</h3>
+      <p>
+        La pregunta que ens plantegem en aquest punt i hem de donar resposta per assegurar que aquest no es          deba a problemes tècnics en la implementació, és perquè el classificador funcionava tan bé amb les
+        Imatges del dataset utilitzat per entrenar i no anava bé amb les del món real.
+        Ull! les imatges utilitzades paratestear el resultat del RDF de la primera tasca no es hab Ian utilitzat per entrenar.
+      </p>
+      <p>
+        Si s'enganxa una ullada a les im atges del primer dataset totes les im atges est an agafades en una distanciaparecida,
+        i hi ha molt poca variabilitat en les im atges d'entrada. Això fa que els resultats obtenidosfuncionen molt bé
+        en imatges preses en un ambient semblant, com ens passa al primer conjunt de test.
+      </p>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
+</body>
+</html>
