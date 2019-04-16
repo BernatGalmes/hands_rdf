@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Resultats detecció de mans en imatges de profunditat</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -55,10 +55,10 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li class="active"><a href="..">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -94,8 +94,45 @@
         el dataset proporcionat per Tomson et al.
         (https://cims.nyu.edu/~tompson/NYU_Hand_Pose_Dataset.htm)
       </p>
+      <h3>Configuració programa:</h3>
+      <pre>
+        ---------------------------------------
+        ---------- Configuració RDF: ----------
+        ---------------------------------------
+        VERSION: 1
+        DATASET: RDF_Train
+        m: 300000
+        OFFSETS_DISTRIBUTION: UNIFORM
+        N_FEATURES: 100
+        N_OFFSETS: 2
+        ROUND_VALUES: -2
+        OFFSETS_SEED: 10
+        DATA_IMS_IN_FILE: 2000
+        DATA_PIXELS_CLASS: 1000
+        TH_DEPTH: 1800
+        BG_DEPTH_VALUE: 32767
+        rf_inc_trees_fit: 15
+        rf_max_depth: 30
+        rf_min_samples_leaf: 1
+        scale_data: False
+        FOLDER_DATA: /home/bernat/Programas/TFM/data
+        FOLDER_DATASETS: /home/bernat/datasets/
+        CLASS_TAG: isHand
+      </pre>
       <h3>Mètriques</h3>
-      <p>Lorem ipsum...</p>
+      <pre>
+              precision    recall  f1-score   support
+
+        Body       0.95      0.98      0.96   1946000
+        Hand       0.98      0.95      0.96   1943337
+
+        micro avg       0.96      0.96      0.96   3889337
+        macro avg       0.96      0.96      0.96   3889337
+        weighted avg       0.96      0.96      0.96   3889337
+
+        (0.96423787492354218, 0.96374960565258294, 0.96373965298416508, None)
+        Cohen kappa score: 0.927497566092
+      </pre>
       <h3>Imatges</h3>
       <h4>Resultats genèrics</h4>
       <p>
