@@ -8,42 +8,322 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
+
+      .nav-side-menu {
+    overflow: auto;
+    font-family: verdana;
+    font-size: 12px;
+    font-weight: 200;
+    background-color: #2e353d;
+    position: fixed;
+    top: 0px;
+    width: 300px;
+    height: 100%;
+    color: #e1ffff;
+}
+
+.nav-side-menu .brand {
+    background-color: #23282e;
+    line-height: 50px;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+}
+
+.nav-side-menu .toggle-btn {
+    display: none;
+}
+
+.nav-side-menu ul,
+.nav-side-menu li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    line-height: 35px;
+    cursor: pointer;
+}
+
+.nav-side-menu ul :not(collapsed) .arrow:before,
+.nav-side-menu li :not(collapsed) .arrow:before {
+    font-family: FontAwesome;
+    content: "\f078";
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+    float: right;
+}
+
+.nav-side-menu ul .active,
+.nav-side-menu li .active {
+    border-left: 3px solid #d19b3d;
+    background-color: #8597ab;
+}
+
+.nav-side-menu ul .sub-menu li.active,
+.nav-side-menu li .sub-menu li.active {
+    color: #d19b3d;
+}
+
+.nav-side-menu ul .sub-menu li.active a,
+.nav-side-menu li .sub-menu li.active a {
+    color: #d19b3d;
+}
+
+.nav-side-menu ul .sub-menu li,
+.nav-side-menu li .sub-menu li {
+    background-color: #181c20;
+    border: none;
+    line-height: 28px;
+    border-bottom: 1px solid #23282e;
+    margin-left: 0px;
+}
+
+.nav-side-menu ul .sub-menu li:hover,
+.nav-side-menu li .sub-menu li:hover {
+    background-color: #020203;
+}
+
+.nav-side-menu ul .sub-menu li:before,
+.nav-side-menu li .sub-menu li:before {
+    font-family: FontAwesome;
+    content: "\f105";
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.nav-side-menu li {
+    padding-left: 0px;
+    border-left: 3px solid #2e353d;
+    border-bottom: 1px solid #23282e;
+}
+
+.nav-side-menu li a {
+    text-decoration: none;
+    color: #e1ffff;
+}
+
+.nav-side-menu li a i {
+    padding-left: 10px;
+    width: 20px;
+    padding-right: 20px;
+}
+
+.nav-side-menu li:hover {
+    border-left: 3px solid #d19b3d;
+    background-color: #4f5b69;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+@media (max-width: 767px) {
+    .nav-side-menu {
+        position: relative;
+        width: 100%;
+        margin-bottom: 10px;
     }
-    
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      padding-top: 20px;
-      background-color: #f1f1f1;
-      height: 100%;
+
+    .nav-side-menu .toggle-btn {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 10 !important;
+        padding: 3px;
+        background-color: #ffffff;
+        color: #000;
+        width: 40px;
+        text-align: center;
     }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
+
+    .brand {
+        text-align: left !important;
+        font-size: 22px;
+        padding-left: 20px;
+        line-height: 50px !important;
     }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;} 
+}
+
+@media (min-width: 767px) {
+    .nav-side-menu .menu-list .menu-content {
+        display: block;
     }
+
+    #main {
+        width: calc(100% - 300px);
+        float: right;
+    }
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 50px;
+    background-color: #222
+}
+
+
+@media (min-width: 768px) {
+    body {
+        margin-top: 50px;
+    }
+}
+
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
+    width: 100%;
+    padding-right: 15px;
+    background-color: #d5ceff;
+}
+
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+
+@media (min-width: 768px) {
+    #wrapper {
+        padding-left: 225px;
+    }
+
+    #page-wrapper {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
+
+/* Top Navigation */
+
+.top-nav {
+    padding: 0 15px;
+}
+
+.top-nav > li {
+    display: inline-block;
+    float: left;
+}
+
+.top-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    color: #fbfafa;
+}
+
+.top-nav > li > a:hover,
+.top-nav > li > a:focus,
+.top-nav > .open > a,
+.top-nav > .open > a:hover,
+.top-nav > .open > a:focus {
+    color: #fff;
+    background-color: #000;
+
+}
+
+.top-nav > .open > .dropdown-menu {
+    float: left;
+    position: absolute;
+    margin-top: 0;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+.top-nav > .open > .dropdown-menu > li > a {
+    white-space: normal;
+}
+
+
+
+h4 {
+    color: black !important;
+}
+
+.modal-body {
+    padding: 40px 50px;
+}
+
+.modal-footer {
+    background-color: #C5D1E6;
+}
+
+h1 {
+	margin: 1em 0 0.5em 0;
+	color: #343434;
+	font-weight: normal;
+	font-family: 'Ultra', sans-serif;   
+	font-size: 36px;
+	line-height: 42px;
+	text-transform: uppercase;
+	/*text-shadow: 0 2px white, 0 3px #777;*/
+}
+
+h2 {
+	margin: 1em 0 0.5em 0;
+	color: #ff7423;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 40px;
+	font-family: 'Orienta', sans-serif;
+	text-transform: uppercase;
+    text-align: center;
+}
+
+h2:before,
+h2:after {
+ background-color: #ff7423;
+ content: "";
+ display: inline-block;
+ height: 3px;
+ position: relative;
+ vertical-align: middle;
+ width: 50%;
+}
+h2:before {
+ right: 0.5em;
+ margin-left: -25%;
+}
+h2:after {
+ left: 0.5em;
+ margin-right: -50%;
+}
+h3 {
+	margin: 1em 0 0.5em 0;
+	color: #343434;
+	font-size: 22px;
+	line-height: 40px;
+	font-weight: normal;
+	/*text-transform: uppercase;*/
+	font-family: 'Orienta', sans-serif;
+	letter-spacing: 1px;
+	font-style: italic;
+}
+
+h4 {
+	margin: 1em 0 0.5em 0;
+	color: #343434;
+	font-size: 18px;
+	line-height: 20px;
+	font-weight: normal;
+	font-family: 'Orienta', sans-serif;
+}
   </style>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -66,149 +346,161 @@
     </div>
   </div>
 </nav>
-  
-<div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><a href="#div-1i">Primera iteració</a></p>
-      <p><a href="#div-2i">Segona iteració</a></p>
-      <p><a href="#">Link</a></p>
-    </div>
-    <div class="col-sm-8 text-left">
-      <h1>RDF results</h1>
-      <p>
-        En aquesta pàgina mostram els resultats de l'execució del nostre
-        RDF en cada una de les iteracions.
-      </p>
-      <p>
-        Per cada iteració mostram els resultats númerics amb els valors del
-        F1-score, accuracy i Cohen's kappa. Així com una sèrie d'imatges per
-        ilustrar els resultats visualment.
-      </p>
-      <hr>
-    </div>
-    <div id="div-1i" class="col-sm-8 text-left">
-      <h2>Primera iteració</h2>
-      <p>
-        En aquesta primera iteració s'executa l'algorisme amb
-        el dataset proporcionat per Tomson et al.
-        (https://cims.nyu.edu/~tompson/NYU_Hand_Pose_Dataset.htm)
-      </p>
-      <h3>Configuració programa:</h3>
-      <pre>
-        ---------------------------------------
-        ---------- Configuració RDF: ----------
-        ---------------------------------------
-        VERSION: 1
-        DATASET: RDF_Train
-        m: 300000
-        OFFSETS_DISTRIBUTION: UNIFORM
-        N_FEATURES: 100
-        N_OFFSETS: 2
-        ROUND_VALUES: -2
-        OFFSETS_SEED: 10
-        DATA_IMS_IN_FILE: 2000
-        DATA_PIXELS_CLASS: 1000
-        TH_DEPTH: 1800
-        BG_DEPTH_VALUE: 32767
-        rf_inc_trees_fit: 15
-        rf_max_depth: 30
-        rf_min_samples_leaf: 1
-        scale_data: False
-        FOLDER_DATA: /home/bernat/Programas/TFM/data
-        FOLDER_DATASETS: /home/bernat/datasets/
-        CLASS_TAG: isHand
-      </pre>
-      <h3>Mètriques</h3>
-      <pre>
-              precision    recall  f1-score   support
 
-        Body       0.95      0.98      0.96   1946000
-        Hand       0.98      0.95      0.96   1943337
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="nav-side-menu">
+                <div class="brand">Brand Logo</div>
+                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+                <div class="menu-list">
+                    <ul id="menu-content" class="menu-content collapse out">
+                        <li id="menu-verTodosFicheros" class="menu-item">
+                           <a href="#div-1i">Primera iteració</a>
+                        </li>
+                        <li data-toggle="collapse" data-target="#menu-verFicheros" class="collapsed menu-item">
+                            <a href="#div-2i">Segona iteració</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container" id="main">
+                <div class="row">
+                    <div class="col-sm-8 text-left">
+                      <h1>RDF results</h1>
+                      <p>
+                        En aquesta pàgina mostram els resultats de l'execució del nostre
+                        RDF en cada una de les iteracions.
+                      </p>
+                      <p>
+                        Per cada iteració mostram els resultats númerics amb els valors del
+                        F1-score, accuracy i Cohen's kappa. Així com una sèrie d'imatges per
+                        ilustrar els resultats visualment.
+                      </p>
+                      <hr>
+                    </div>
+                    <div id="div-1i" class="col-sm-8 text-left">
+                      <h2>Primera iteració</h2>
+                      <p>
+                        En aquesta primera iteració s'executa l'algorisme amb
+                        el dataset proporcionat per Tomson et al.
+                        (<a href="https://cims.nyu.edu/~tompson/NYU_Hand_Pose_Dataset.htm">https://cims.nyu.edu/~tompson/NYU_Hand_Pose_Dataset.htm</a> )
+                      </p>
+                      <h3>Configuració programa:</h3>
+                      <pre>
+---------------------------------------
+---------- Configuració RDF: ----------
+---------------------------------------
+VERSION: 1
+DATASET: RDF_Train
+m: 300000
+OFFSETS_DISTRIBUTION: UNIFORM
+N_FEATURES: 100
+N_OFFSETS: 2
+ROUND_VALUES: -2
+OFFSETS_SEED: 10
+DATA_IMS_IN_FILE: 2000
+DATA_PIXELS_CLASS: 1000
+TH_DEPTH: 1800
+BG_DEPTH_VALUE: 32767
+rf_inc_trees_fit: 15
+rf_max_depth: 30
+rf_min_samples_leaf: 1
+scale_data: False
+FOLDER_DATA: /home/bernat/Programas/TFM/data
+FOLDER_DATASETS: /home/bernat/datasets/
+CLASS_TAG: isHand
+                      </pre>
+                      <h3>Mètriques</h3>
+                      <pre>
+      precision    recall  f1-score   support
 
-        micro avg       0.96      0.96      0.96   3889337
-        macro avg       0.96      0.96      0.96   3889337
-        weighted avg       0.96      0.96      0.96   3889337
+Body       0.95      0.98      0.96   1946000
+Hand       0.98      0.95      0.96   1943337
 
-        (0.96423787492354218, 0.96374960565258294, 0.96373965298416508, None)
-        Cohen kappa score: 0.927497566092
-      </pre>
-      <h3>Imatges</h3>
-      <h4>Resultats genèrics</h4>
-      <p>
-        Els següents tres exemples mostren 3 casos en que l'algorisme té un funcionament correcte.
-      </p>
-      <img src="https://www.dropbox.com/s/9gbz979zeh3svzs/i1-res1.png?dl=1" alt="Smiley face" height="200" width="620">
-      <img src="https://www.dropbox.com/s/kon4gn519bk6dix/i1-res2.png?dl=1" alt="Smiley face" height="200" width="620">
-      <img src="https://www.dropbox.com/s/7ljeku81lkpedvs/i1-res3.png?dl=1" alt="Smiley face" height="200" width="620">
+micro avg       0.96      0.96      0.96   3889337
+macro avg       0.96      0.96      0.96   3889337
+weighted avg       0.96      0.96      0.96   3889337
 
-      <h4>
-        Problematiques detectades
-      </h4>
-      <h5>On acaba la mà i comença el braç?</h5>
-      <img src="https://www.dropbox.com/s/szbbkfrvza25f88/i1-res-problem1.png?dl=1" alt="Smiley face" height="200" width="620">
-      <img src="https://www.dropbox.com/s/58z4cy49ha8clqu/i1-res-problem2.png?dl=1" alt="Smiley face" height="200" width="620">
-      <img src="https://www.dropbox.com/s/4cu7keczg9ljeuy/i1-res-problem3.png?dl=1" alt="Smiley face" height="200" width="620">
-      <img src="https://www.dropbox.com/s/eu72knntjexolcg/i1-res-problem4.png?dl=1" alt="Smiley face" height="200" width="620">
+(0.96423787492354218, 0.96374960565258294, 0.96373965298416508, None)
+Cohen kappa score: 0.927497566092
+                      </pre>
+                      <h3>Imatges</h3>
+                      <h4>Resultats genèrics</h4>
+                      <p>
+                        Els següents tres exemples mostren 3 casos en que l'algorisme té un funcionament correcte.
+                      </p>
+                      <img src="https://www.dropbox.com/s/9gbz979zeh3svzs/i1-res1.png?dl=1" alt="Smiley face" height="200" width="620">
+                      <img src="https://www.dropbox.com/s/kon4gn519bk6dix/i1-res2.png?dl=1" alt="Smiley face" height="200" width="620">
+                      <img src="https://www.dropbox.com/s/7ljeku81lkpedvs/i1-res3.png?dl=1" alt="Smiley face" height="200" width="620">
 
-      <p>Els colzes són extrems del cos, al igual que les mans</p>
-      <img src="https://www.dropbox.com/s/0rotrg9vcfzil5a/i1-res-problem5.png?dl=1" alt="Smiley face" height="200" width="620">
-      <img src="https://www.dropbox.com/s/gzqc8nwr91cu96e/i1-res-problem6.png?dl=1" alt="Smiley face" height="200" width="620">
+                      <h4>
+                        Problematiques detectades
+                      </h4>
+                      <h5>On acaba la mà i comença el braç?</h5>
+                      <img src="https://www.dropbox.com/s/szbbkfrvza25f88/i1-res-problem1.png?dl=1" alt="Smiley face" height="200" width="620">
+                      <img src="https://www.dropbox.com/s/58z4cy49ha8clqu/i1-res-problem2.png?dl=1" alt="Smiley face" height="200" width="620">
+                      <img src="https://www.dropbox.com/s/4cu7keczg9ljeuy/i1-res-problem3.png?dl=1" alt="Smiley face" height="200" width="620">
+                      <img src="https://www.dropbox.com/s/eu72knntjexolcg/i1-res-problem4.png?dl=1" alt="Smiley face" height="200" width="620">
 
-      <p>Posicions de les mans, profunditat similar a la resta del cos.</p>
-      <img src="https://www.dropbox.com/s/y0xnaqcbhq2xaaa/i1-res-problem7.png?dl=1" alt="Smiley face" height="200" width="620">
-      <img src="https://www.dropbox.com/s/f9nxiuuoq6kd2at/i1-res-problem8.png?dl=1" alt="Smiley face" height="200" width="620">
-      <img src="https://www.dropbox.com/s/59kceibaxqj46ml/i1-res-problem9.png?dl=1" alt="Smiley face" height="200" width="620">
+                      <p>Els colzes són extrems del cos, al igual que les mans</p>
+                      <img src="https://www.dropbox.com/s/0rotrg9vcfzil5a/i1-res-problem5.png?dl=1" alt="Smiley face" height="200" width="620">
+                      <img src="https://www.dropbox.com/s/gzqc8nwr91cu96e/i1-res-problem6.png?dl=1" alt="Smiley face" height="200" width="620">
 
-      <p>Lorem ipsum...</p>
-    </div>
-    <div id="div-2i" class="col-sm-8 text-left">
-      <h2>Segona iteració</h2>
-      <p>
-        L'objectiu d'aquesta iteració és comprovar si l'algorisme funciona correctament amb imatges agafades
-        del món real.
-      </p>
-      <p>
-        Hem adaptat l'algorisme per a processar imatges agafades directament d'una càmera TOF,
-        concretament la de la kinect 2.
-        També, hem integrat al software una implementació d'un algorisme de Background substraction
-        com el definit a https://www.sciencedirect.com/science/article/pii/S0167865516302379.
-      </p>
-      <p>
-        Hem reentrenat el RDF amb el dataset que ja havíem utilitzat a la primera iteració,
-        i l'hem validat amb les nostres imatges.
-      </p>
-      <h3>Mètriques</h3>
-      <p>
-        Les mètriques són les mateixes que en la primera iteració ja que
-        utilitzem el mateix classificador.
-      </p>
-      <h3>Imatges</h3>
-      <img src="https://www.dropbox.com/s/4blvihxyxbq2crg/i2-res1.png?dl=1" alt="Smiley face" height="620" width="620">
-      <img src="https://www.dropbox.com/s/r8pq7gngzp7y2po/i2-res2.png?dl=1" alt="Smiley face" height="620" width="620">
+                      <p>Posicions de les mans, profunditat similar a la resta del cos.</p>
+                      <img src="https://www.dropbox.com/s/y0xnaqcbhq2xaaa/i1-res-problem7.png?dl=1" alt="Smiley face" height="200" width="620">
+                      <img src="https://www.dropbox.com/s/f9nxiuuoq6kd2at/i1-res-problem8.png?dl=1" alt="Smiley face" height="200" width="620">
+                      <img src="https://www.dropbox.com/s/59kceibaxqj46ml/i1-res-problem9.png?dl=1" alt="Smiley face" height="200" width="620">
 
-      <h3>Conclusions</h3>
-      <p>
-        La pregunta que ens plantegem en aquest punt i hem de donar resposta per assegurar que aquest no es          deba a problemes tècnics en la implementació, és perquè el classificador funcionava tan bé amb les
-        Imatges del dataset utilitzat per entrenar i no anava bé amb les del món real.
-        Ull! les imatges utilitzades paratestear el resultat del RDF de la primera tasca no es hab Ian utilitzat per entrenar.
-      </p>
-      <p>
-        Si s'enganxa una ullada a les im atges del primer dataset totes les im atges est an agafades en una distanciaparecida,
-        i hi ha molt poca variabilitat en les im atges d'entrada. Això fa que els resultats obtenidosfuncionen molt bé
-        en imatges preses en un ambient semblant, com ens passa al primer conjunt de test.
-      </p>
-    </div>
-    <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>ADS</p>
-      </div>
-      <div class="well">
-        <p>ADS</p>
-      </div>
-    </div>
-  </div>
-</div>
+                    </div>
+                    <div id="div-2i" class="col-sm-8 text-left">
+                      <h2>Segona iteració</h2>
+                      <p>
+                        L'objectiu d'aquesta iteració és comprovar si l'algorisme funciona correctament amb imatges agafades
+                        del món real.
+                      </p>
+                      <p>
+                        Hem adaptat l'algorisme per a processar imatges agafades directament d'una càmera TOF,
+                        concretament la de la kinect 2.
+                        També, hem integrat al software una implementació d'un algorisme de Background substraction
+                        com el definit a l'article
+                          <a href="https://www.sciencedirect.com/science/article/pii/S0167865516302379">
+                              Modeling depth for nonparametric foreground segmentation using RGBD devices
+                          </a>.
+                      </p>
+                      <p>
+                        Hem reentrenat el RDF amb el dataset que ja havíem utilitzat a la primera iteració,
+                        i l'hem validat amb les nostres imatges.
+                      </p>
+                      <h3>Mètriques</h3>
+                      <p>
+                        Les mètriques són les mateixes que en la primera iteració ja que
+                        utilitzem el mateix classificador.
+                      </p>
+                      <h3>Imatges</h3>
+                      <img src="https://www.dropbox.com/s/4blvihxyxbq2crg/i2-res1.png?dl=1" alt="Smiley face" height="620" width="620">
+                      <img src="https://www.dropbox.com/s/r8pq7gngzp7y2po/i2-res2.png?dl=1" alt="Smiley face" height="620" width="620">
+
+                      <h3>Conclusions</h3>
+                      <p>
+                        La pregunta que ens plantegem en aquest punt i hem de donar resposta per assegurar que aquest no sigui degut
+                        a problemes tècnics en la implementació, és perquè el classificador funcionava tan bé amb les imatges del
+                        dataset utilitzat per entrenar i no anava bé amb les del món real. Ull! les imatges utilitzades per a testejar el
+                        resultat del RDF de la primera tasca no s'havien utilitzat per entrenar.
+                      </p>
+                      <p>
+                        Si es pega una ullada a les imatges del primer dataset es pot observar que totes les imatges estan agafades
+                        a una distància semblant, i hi ha molt poca variabilitat en les imatges del dataset.
+                        Aquesta és la causa de que els resultats siguin tan bons en imatges preses en un ambient semblant,
+                        com ens passa amb el primer conjunt de test.
+                      </p>
+                    </div>
+                </div>
+            </div>
+        <!-- footers -->
+        </div> <!-- /.col -->
+    </div> <!-- /.row -->
+</div> <!-- /.wrapper -->
 
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
