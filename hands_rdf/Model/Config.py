@@ -16,9 +16,15 @@ class Config:
         def __init__(self):
 
             # Software version
-            self.VERSION = 1
+            self.VERSION = 3
 
-            self.DATASET = "RDF_Train"
+            self.DATASETS = [
+                "POSTPROCESSED_RDF_Train",
+                "BG_dataset/depth",
+                "BG_dataset/depth/datafaces"
+            ]
+
+            self.DATASET = self.DATASETS[1]
             self.m = 300000
 
             self.OFFSETS_USE_ALL = True
@@ -59,9 +65,12 @@ class Config:
             return ["feat_" + str(i) for i in range(0, self.N_FEATURES)]
 
         @property
-        def PATH_DATASET(self):
-            return "/home/bernat/datasets/" + self.DATASET + "/"
+        def PATH_DATASETS(self):
+            return "/home/bernat/datasets/"
 
+        @property
+        def PATH_DATASET(self):
+            return self.PATH_DATASETS + self.DATASET + "/"
         @property
         def FOLDER_RAW_DATA(self):
 
