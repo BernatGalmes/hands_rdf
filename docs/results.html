@@ -278,27 +278,27 @@ h2 {
 	line-height: 40px;
 	font-family: 'Orienta', sans-serif;
 	text-transform: uppercase;
-    text-align: center;
+    text-align: left;
 }
 
-h2:before,
-h2:after {
- background-color: #ff7423;
- content: "";
- display: inline-block;
- height: 3px;
- position: relative;
- vertical-align: middle;
- width: 50%;
-}
-h2:before {
- right: 0.5em;
- margin-left: -25%;
-}
-h2:after {
- left: 0.5em;
- margin-right: -50%;
-}
+/*h2:before,*/
+/*h2:after {*/
+/* background-color: #ff7423;*/
+/* content: "";*/
+/* display: inline-block;*/
+/* height: 3px;*/
+/* position: relative;*/
+/* vertical-align: middle;*/
+/* width: 50%;*/
+/*}*/
+/*h2:before {*/
+/* right: 0.5em;*/
+/* margin-left: -25%;*/
+/*}*/
+/*h2:after {*/
+/* left: 0.5em;*/
+/* margin-right: -50%;*/
+/*}*/
 h3 {
 	margin: 1em 0 0.5em 0;
 	color: #343434;
@@ -331,17 +331,17 @@ h4 {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#">Mans</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="..">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="..">Inici</a></li>
+        <li class="active"><a href="results.html">Resultats</a></li>
+        <li><a href="about.html">Nosaltres</a></li>
+        <li><a href="contact.html">Contacte</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
       </ul>
     </div>
   </div>
@@ -413,16 +413,15 @@ CLASS_TAG: isHand
                       </pre>
                       <h3>Mètriques</h3>
                       <pre>
-      precision    recall  f1-score   support
+           precision    recall  f1-score   support
 
-Body       0.95      0.98      0.96   1946000
-Hand       0.98      0.95      0.96   1943337
+    Body        0.95      0.98      0.96   1946000
+    Hand        0.98      0.95      0.96   1943337
 
 micro avg       0.96      0.96      0.96   3889337
 macro avg       0.96      0.96      0.96   3889337
-weighted avg       0.96      0.96      0.96   3889337
+weighted avg    0.96      0.96      0.96   3889337
 
-(0.96423787492354218, 0.96374960565258294, 0.96373965298416508, None)
 Cohen kappa score: 0.927497566092
                       </pre>
                       <h3>Imatges</h3>
@@ -494,6 +493,158 @@ Cohen kappa score: 0.927497566092
                         Aquesta és la causa de que els resultats siguin tan bons en imatges preses en un ambient semblant,
                         com ens passa amb el primer conjunt de test.
                       </p>
+                    </div>
+                    <div id="div-3i" class="col-sm-8 text-left">
+                        <h2>Tercera iteració</h2>
+                        <p>
+                            Per a solventar el problema de la falta de variabilitat de les dades del dataset,
+                            en aquesta iteració s'ha elaborat un nou dataset amb el mateix format que l'anterior.
+                            S'ha intentat que les imatges del nou dataset continguin la màxima variabilitat possible.
+                        </p>
+                        <p>
+                            En el dataset anterior la majoria de les imatges tenien a una persona asseguda en primer pla.
+                            El nostre està format per la següent proporció de distintes imatges:
+                        </p>
+                        <ul>
+                            <li>33 % imatges persona dreta fent moviments amb les mans</li>
+                            <li>33 % imatges persona asseguda fent coses.</li>
+                            <li>33 % imatges persona caminant.</li>
+                        </ul>
+                        <p>
+                            A més, aquest nou dataset incorpora imatges de persones interactuant
+                            amb objectes.
+                        </p>
+                        <p>
+                            Per a testejar el funcionament del mètode amb aquest nou dataset
+                        </p>
+                        <h3>Configuració programa:</h3>
+                        <pre>
+---------------------------------------
+---------- Configuració RDF: ----------
+---------------------------------------
+VERSION: 3
+DATASETS: ['POSTPROCESSED_RDF_Train', 'BG_dataset/depth']
+DATASET: BG_dataset/depth
+m: 300000
+OFFSETS_USE_ALL: True
+OFFSETS_DISTRIBUTION: UNIFORM
+N_FEATURES: 1000
+N_OFFSETS: 2
+ROUND_VALUES: -2
+OFFSETS_SEED: 10
+DATA_IMS_IN_FILE: 2000
+DATA_PIXELS_CLASS: 500
+TH_DEPTH: 4000
+BG_DEPTH_VALUE: 32767
+rf_inc_trees_fit: 15
+rf_max_depth: 30
+rf_min_samples_leaf: 1
+scale_data: False
+FOLDER_DATA: /home/bernat/Programas/TFM/data
+CLASS_TAG: isHand
+                      </pre>
+                        <h3>Mètriques</h3>
+                        <pre>
+              precision    recall  f1-score   support
+
+           0       0.92      0.98      0.95    772000
+           1       0.97      0.90      0.93    667358
+
+   micro avg       0.94      0.94      0.94   1439358
+   macro avg       0.95      0.94      0.94   1439358
+weighted avg       0.94      0.94      0.94   1439358
+
+Cohen kappa score: 0.882431098807
+                        </pre>
+                        <pre>RDF(max_depth=30, min_samples_leaf=1, n_estimators=30)</pre>
+                        <h3>Imatges</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/W1Kiw7G9j7g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h3>
+                            Conclusions
+                        </h3>
+                        <p>
+                            Tot i que les mètriques hagin disminuït, al vídeo es pot apreciar com la qualitat dels resultats
+                            ha millorat. Ara, l'algorisme ara funciona amb quasi tots els casos.
+                        </p>
+                        <p>
+                            El decrement en el valor de les mètriques es degut a que al augmentar la quantitat de
+                            variabilitat de les dades, s'ha incrementat el nombre d'exemples d'entrenament que el mètode
+                            no es capaç d'identificar correctament. Així, com també el nou dataset incorpora casos més complexes
+                            que no es contemplaven en el dataset anterior com la interacció amb objectes.
+                        </p>
+                        <p>
+                            Gràcies a aquest experiment s'ha verificat que hi ha casos en que és impossible fer que
+                            l'algorisme funcioni. Un bon exemple són els colces, el mètode utilitzat és incapaç d'identificar
+                            que és un colce i que és una mà.
+                        </p>
+                        <p>
+                            També hem observat que el mètode té una tendència a confondre les cares amb les mans.
+                        </p>
+                    </div>
+                    <div id="div-4i" class="col-sm-8 text-left">
+                        <h2>Quarta iteració</h2>
+                        <p>
+                            L'objectiu que es persegueix en aquesta iteració és mitigar el problema que té l'algorisme,
+                            que sovint confon les cares amb les mans.
+                        </p>
+                        <p>
+                            Per aconseguir-ho utilitzem una tècnica que consisteix en afegir una major
+                            proporció d'exemples "hard-negatives", els que el classificador té una tèndència a
+                            classificar erròniament.
+                        </p>
+                        <p>
+                            Hem aplicat una sèrie de tècniques per a detectar les cares que apareixen en cada imatge.
+                            De cada cara identificada hem generat 500 exemples d'entrenament.
+                        </p>
+                        <p>
+                            Finalment, hem fusionat tots els exemples generats amb el conjunt d'entrenament.
+                            Una altre contribució que s'ha fet en aquesta iteració és que s'han mesclat els exemples
+                            d'entrenament de tots els subconjunts. Així que ara a cada subconjunt d'entrenament
+                            hi tenim exemples de totes les imatges. Anteriorment cada subconjunt esteia format per
+                            els exemples d'un subconjunt d'imatges concret.
+                        </p>
+                        <h3>Configuració programa:</h3>
+                        <pre>
+---------------------------------------
+---------- Configuració RDF: ----------
+---------------------------------------
+VERSION: 4
+DATASETS: ['POSTPROCESSED_RDF_Train', 'BG_dataset/depth', 'BG_dataset/depth/datafaces']
+DATASET: BG_dataset/depth/datafaces
+m: 300000
+OFFSETS_USE_ALL: True
+OFFSETS_DISTRIBUTION: UNIFORM
+N_FEATURES: 1000
+N_OFFSETS: 2
+ROUND_VALUES: -2
+OFFSETS_SEED: 10
+DATA_IMS_IN_FILE: 2000
+DATA_PIXELS_CLASS: 500
+TH_DEPTH: 4000
+BG_DEPTH_VALUE: 32767
+rf_inc_trees_fit: 15
+rf_max_depth: 30
+rf_min_samples_leaf: 1
+scale_data: False
+FOLDER_DATA: /home/bernat/Programas/TFM/data
+CLASS_TAG: isHand
+                      </pre>
+                        <h3>Mètriques</h3>
+                        <pre>
+              precision    recall  f1-score   support
+
+           0       0.94      0.98      0.96    772000
+           1       0.97      0.93      0.95    667358
+
+   micro avg       0.95      0.95      0.95   1439358
+   macro avg       0.96      0.95      0.95   1439358
+weighted avg       0.95      0.95      0.95   1439358
+
+Cohen kappa score: 0.905983513422
+                        </pre>
+                        <pre>RDF(max_depth=30, min_samples_leaf=1, n_estimators=30)</pre>
+                        <h3>Imatges</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/42HDgCgPKHE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
