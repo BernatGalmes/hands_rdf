@@ -1,7 +1,7 @@
 import os
+import argparse
 import numpy as np
 import json
-import math
 
 
 class Config:
@@ -74,8 +74,7 @@ class Config:
         @property
         def FOLDER_RAW_DATA(self):
 
-            return self.FOLDER_DATA + "/rawData/v" + str(self.VERSION) + "_" + self.OFFSETS_DISTRIBUTION + "_" + str(
-                self.N_FEATURES) + "_" + str(self.OFFSET_MAX) + "/" + self.DATASET + "/"
+            return self.FOLDER_RAW + "/" + self.DATASET + "/"
 
         @property
         def FOLDER_RAW(self):
@@ -135,6 +134,28 @@ class Config:
         @property
         def MIN_DEPTH(self):
             return 0   # lower depth than this value are marked with max depth
+
+        def set_arguments(self, parser=None):
+            if parser is None:
+                parser = argparse.ArgumentParser()
+            parser.add_argument('--dataset', help='foo help')
+            parser.add_argument('--n_features', help='foo help')
+            parser.add_argument('--data_ims_in_file', help='foo help')
+            parser.add_argument('--data_pixels_class', help='foo help')
+
+            args = parser.parse_args()
+            if args.dataset:
+                config.DATASET = config.DATASETS[int(args.dataset)]
+
+            if args.n_features:
+                config.N_FEATURES = int(args.n_features)
+
+            if args.data_ims_in_file:
+                config.DATA_IMS_IN_FILE = int(args.data_ims_in_file)
+
+            if args.data_pixels_class:
+                config.DATA_PIXELS_CLASS = int(args.data_pixels_class)
+            return args
 
         def save_json(self, file):
             with open(file, 'w') as fp:
