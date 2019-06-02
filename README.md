@@ -1,7 +1,7 @@
 # hands_rdf
 
 Library with utils to segment hands onto RGBD images.
-The library is used in hands_cv project https://github.com/BernatGalmes/hands_cv.
+The library is used in [hands_cv project](https://github.com/BernatGalmes/hands_cv).
 
 Note that the software architecture goes around the Model.Config class.
 In this class we should specify:
@@ -89,3 +89,5 @@ predicted = clf.predict_proba(features)
 proba_mask[positions] = predicted[:, 1]
 ```
 
+### Extra details
+Extra project details can be found [Here](https://bernatgalmes.github.io/hands_rdf/docs/results.html).

@@ -281,24 +281,6 @@ h2 {
     text-align: left;
 }
 
-/*h2:before,*/
-/*h2:after {*/
-/* background-color: #ff7423;*/
-/* content: "";*/
-/* display: inline-block;*/
-/* height: 3px;*/
-/* position: relative;*/
-/* vertical-align: middle;*/
-/* width: 50%;*/
-/*}*/
-/*h2:before {*/
-/* right: 0.5em;*/
-/* margin-left: -25%;*/
-/*}*/
-/*h2:after {*/
-/* left: 0.5em;*/
-/* margin-right: -50%;*/
-/*}*/
 h3 {
 	margin: 1em 0 0.5em 0;
 	color: #343434;
@@ -337,6 +319,7 @@ h4 {
       <ul class="nav navbar-nav">
         <li><a href="..">Inici</a></li>
         <li class="active"><a href="results.html">Resultats</a></li>
+          <li><a href="dbg.html">Dataset</a></li>
         <li><a href="about.html">Nosaltres</a></li>
         <li><a href="contact.html">Contacte</a></li>
       </ul>
@@ -350,20 +333,6 @@ h4 {
 <div id="page-wrapper">
     <div class="row">
         <div class="col-sm-12">
-            <div class="nav-side-menu">
-                <div class="brand">Brand Logo</div>
-                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-                <div class="menu-list">
-                    <ul id="menu-content" class="menu-content collapse out">
-                        <li id="menu-verTodosFicheros" class="menu-item">
-                           <a href="#div-1i">Primera iteració</a>
-                        </li>
-                        <li data-toggle="collapse" data-target="#menu-verFicheros" class="collapsed menu-item">
-                            <a href="#div-2i">Segona iteració</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
             <div class="container" id="main">
                 <div class="row">
                     <div class="col-sm-8 text-left">
@@ -383,8 +352,7 @@ h4 {
                       <h2>Primera iteració</h2>
                       <p>
                         En aquesta primera iteració s'executa l'algorisme amb
-                        el dataset proporcionat per Tomson et al.
-                        (<a href="https://cims.nyu.edu/~tompson/NYU_Hand_Pose_Dataset.htm">https://cims.nyu.edu/~tompson/NYU_Hand_Pose_Dataset.htm</a> )
+                        el <a href="https://cims.nyu.edu/~tompson/NYU_Hand_Pose_Dataset.htm">dataset proporcionat per Tomson et al.</a> .
                       </p>
                       <h3>Configuració programa:</h3>
                       <pre>
