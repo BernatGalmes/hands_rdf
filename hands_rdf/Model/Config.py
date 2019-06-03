@@ -53,7 +53,11 @@ class Config:
 
             self.scale_data = False
 
+            # PLACE HERE YOUR RESULTS FOLDER PATH
             self.FOLDER_DATA = "/path/to/data"
+
+            # PLACE HERE YOUR DATASETS FOLDER PATH
+            self.PATH_DATASETS = "/path/to/folder/containing/datasets/"
 
             self.CLASS_TAG = "isHand"
 
@@ -64,11 +68,6 @@ class Config:
             :return:
             """
             return ["feat_" + str(i) for i in range(0, self.N_FEATURES)]
-
-        @property
-        def PATH_DATASETS(self):
-            # return "/path/to/folder/containing/datasets/"
-            return "/home/bernat/datasets/"
 
         @property
         def PATH_DATASET(self):
