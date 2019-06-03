@@ -19,6 +19,7 @@ class Config:
             self.VERSION = 3
 
             self.DATASETS = [
+                # List of dataset folders in self.PATH_DATASETS
                 "POSTPROCESSED_RDF_Train",
                 "BG_dataset/depth",
                 "BG_dataset/depth/datafaces"
@@ -47,12 +48,12 @@ class Config:
 
             # Random forest parameters
             self.rf_inc_trees_fit = 15
-            self.rf_max_depth = 30
+            self.rf_max_depth = 10
             self.rf_min_samples_leaf = 1
 
             self.scale_data = False
 
-            self.FOLDER_DATA = os.path.realpath(os.path.dirname(__file__) + '/../../../data')
+            self.FOLDER_DATA = "/path/to/data"
 
             self.CLASS_TAG = "isHand"
 
@@ -66,14 +67,15 @@ class Config:
 
         @property
         def PATH_DATASETS(self):
+            # return "/path/to/folder/containing/datasets/"
             return "/home/bernat/datasets/"
 
         @property
         def PATH_DATASET(self):
             return self.PATH_DATASETS + self.DATASET + "/"
+
         @property
         def FOLDER_RAW_DATA(self):
-
             return self.FOLDER_RAW + "/" + self.DATASET + "/"
 
         @property
@@ -91,23 +93,6 @@ class Config:
             return self.FOLDER_RAW_DATA + "test/"
 
         @property
-        def FOLDER_RESULTS(self):
-            return self.FOLDER_DATA + "/results/v" + str(self.VERSION) + "/"
-
-        @property
-        def FOLDER_FRAMES(self):
-            return self.FOLDER_DATA + "/frames/v" + str(self.VERSION) + "/"
-
-        @property
-        def FOLDER_CLFS(self):
-            return self.FOLDER_DATA + "/Classifiers/v" + str(self.VERSION) + "/" \
-                   + self.OFFSETS_DISTRIBUTION + "_" + str(self.N_FEATURES) + "/"
-
-        @property
-        def FOLDER_OFFSETS(self):
-            return self.FOLDER_DATA + "/offsets/"
-
-        @property
         def FOLDER_OFFSETS(self):
             return self.FOLDER_DATA + "/offsets/"
 
@@ -117,7 +102,7 @@ class Config:
 
         @property
         def PATH_CLF_FILE(self):
-            return self.FOLDER_RAW_DATA + '/clf' + str(self.VERSION) + '_' + str(self.OFFSET_MAX) + '.sav'
+            return os.path.dirname(__file__) + os.path.sep + "Objects" + os.path.sep + "clf.sav"
 
         @property
         def FILE_TEST_DATA(self):

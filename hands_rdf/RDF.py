@@ -30,6 +30,9 @@ log = logging.getLogger(__name__)
 
 
 class RDF(RandomForestClassifier):
+
+    # Store if the current instance loaded is configured according to
+    # the attributes in Config class
     TRAINED = False
 
     def __new__(cls, *args, **kwargs):
@@ -46,26 +49,10 @@ class RDF(RandomForestClassifier):
                 clf = pickle.load(handle)
 
             RDF.TRAINED = clf.max_depth == config.rf_max_depth and \
-                          len(clf.estimators_) == config.rf_inc_trees_fit * len(TrainModels()) and \
                           clf.min_samples_leaf == config.rf_min_samples_leaf and \
                           (clf.n_features_ == config.N_FEATURES or not config.OFFSETS_USE_ALL)
 
-            if RDF.TRAINED:
-                return clf
-            else:
-                if clf.max_depth != config.rf_max_depth:
-                    log.info("Max. depth has changed")
-
-                if clf.min_samples_leaf != config.rf_min_samples_leaf:
-                    log.info("Min. samples leaf has changed")
-
-                elif len(clf.estimators_) != config.rf_inc_trees_fit * len(TrainModels()):
-                    log.info("Number of estimators has changed " + str(len(clf.estimators_)) + " vs " +
-                             str(config.rf_inc_trees_fit * len(TrainModels())))
-
-                elif clf.n_features_ != config.N_FEATURES:
-                    log.info("Number of features has changed " + str(clf.n_features_) + " vs " +
-                             str(config.N_FEATURES))
+            return clf
 
         return super(RDF, cls).__new__(cls)
 
